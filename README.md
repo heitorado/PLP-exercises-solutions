@@ -1,6 +1,7 @@
 # Paradigmas de Linguagens de Programação
 
-Repositório do projeto da disciplina Paradigmas de Linguagens de Programação ([in1007](https://www.cin.ufpe.br/~in1007/)) da pós-graduação em Ciência da Computação da UFPE, ministrada pelo Prof.Dr. Augusto Sampaio.
+### Melhorias QdV e Exercícios resolvidos
+---
 
 Esse fork feito por @heitorado contém atualizações neste readme, a inclusão de um arquivo `Makefile`, e exercícios resolvidos na forma de Pull Requests a esse repositório, para que fique melhor ilustrado as mudanças necessárias na linguagem para atingir os objetivos propostos em cada exercício.
 
