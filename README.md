@@ -32,6 +32,18 @@ Usando makefile:
 make plp
 ```
 
+## Exercícios Resolvidos:
+- LE1
+  - [Exercício 1: Adiciona tipo char (`ValorChar`) e a operação `toAscii` sobre caracter.](https://github.com/heitorado/PLP-exercises-solutions/pull/1)
+  - Exercicio 2: Implementa `ValoReal` e operações aritméticas sobre os reais
+  - Exercício 3: Implementa operadores relacionais para valores inteiros: menor que, maior que, maior ou igual, menor ou igual.
+- LE2
+  - ☠️
+- LF1
+  - ☠️
+- LF2
+  - ☠️   
+
 ## Créditos
 
 Baseado no fork de [@fmca](https://github.com/fmca)
