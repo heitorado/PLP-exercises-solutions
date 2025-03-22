@@ -3,7 +3,7 @@
 ### Melhorias QdV e Exercícios resolvidos
 ---
 
-Esse fork feito por @heitorado contém atualizações neste readme, a inclusão de um arquivo `Makefile`, e exercícios resolvidos na forma de Pull Requests a esse repositório, para que fique melhor ilustrado as mudanças necessárias na linguagem para atingir os objetivos propostos em cada exercício.
+Esse fork feito por [@heitorado](https://github.com/heitorado) contém atualizações neste readme, a inclusão de um arquivo `Makefile`, e exercícios resolvidos na forma de Pull Requests a esse repositório, para que fique melhor ilustrado as mudanças necessárias na linguagem para atingir os objetivos propostos em cada exercício.
 
 ## Execução
 
@@ -34,4 +34,4 @@ make plp
 
 ## Créditos
 
-Baseado no fork de @fmca
+Baseado no fork de [@fmca](https://github.com/fmca)
