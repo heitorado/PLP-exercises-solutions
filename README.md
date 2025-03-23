@@ -38,11 +38,12 @@ make plp
   - [Exercicio 2: Implementa `ValorReal` e operações aritméticas sobre os reais](https://github.com/heitorado/PLP-exercises-solutions/pull/2)
   - [Exercício 3: Implementa operadores relacionais para valores inteiros (menor que, maior que)](https://github.com/heitorado/PLP-exercises-solutions/pull/3)
 - LE2
-  - ☠️
+  - Exercício 4: Torna as declarações de um `let` **sequenciais** ao invés de **colaterais**
 - LF1
-  - ☠️
+  - Exercicio 5: Adiciona casamento de padrão na linguagem funcional 1
 - LF2
-  - ☠️   
+  - Exercício 6: Redefine as funções map e filter usando compreensão de listas
+  - Exercício 7: Define quicksort usando compreensão de listas
 
 ## Créditos
 
