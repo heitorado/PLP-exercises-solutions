@@ -219,7 +219,7 @@ Valor PValorReal() :
 {
   token = < REAL_LITERAL >
   {
-    return new ValorReal(Float.parseFloat(token.toString()));
+    return new ValorReal(Double.parseDouble(token.toString()));
   }
 }
 
