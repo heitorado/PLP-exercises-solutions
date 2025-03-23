@@ -36,7 +36,7 @@ make plp
 - LE1
   - [Exercício 1: Adiciona tipo char (`ValorChar`) e a operação `toAscii` sobre caracter.](https://github.com/heitorado/PLP-exercises-solutions/pull/1)
   - [Exercicio 2: Implementa `ValorReal` e operações aritméticas sobre os reais](https://github.com/heitorado/PLP-exercises-solutions/pull/2)
-  - Exercício 3: Implementa operadores relacionais para valores inteiros: menor que, maior que, maior ou igual, menor ou igual.
+  - [Exercício 3: Implementa operadores relacionais para valores inteiros (menor que, maior que)](https://github.com/heitorado/PLP-exercises-solutions/pull/3)
 - LE2
   - ☠️
 - LF1
