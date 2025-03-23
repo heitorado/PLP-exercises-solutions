@@ -27,7 +27,9 @@ public class ExpMenos extends ExpUnaria{
 	 *            o ambiente de execu��o.
 	 */
 	public Valor avaliar(AmbienteExecucao amb) {
-		return new ValorInteiro(- ((ValorInteiro)getExp().avaliar(amb)).valor());
+		TipoPrimitivo tipoExpr = getExp() instanceof ValorReal ? TipoPrimitivo.REAL : TipoPrimitivo.INTEIRO;
+
+		return new ValorNumerico(- ((ValorNumerico)getExp().avaliar(amb)).valor(), tipoExpr);
 	}
 
 	/**
@@ -40,7 +42,8 @@ public class ExpMenos extends ExpUnaria{
 	 *         <code>false</code> caso contrario.
 	 */
 	protected boolean checaTipoElementoTerminal(AmbienteCompilacao amb) {
-		return (getExp().getTipo(amb).eInteiro());
+		boolean numerico = getExp().getTipo(amb).eInteiro() || getExp().getTipo(amb).eReal();
+		return numerico;
 	}
 
 	/**
@@ -52,6 +55,6 @@ public class ExpMenos extends ExpUnaria{
 	 * @return os tipos possiveis desta expressao.
 	 */
 	public Tipo getTipo(AmbienteCompilacao amb) {
-		return TipoPrimitivo.INTEIRO;
+		return getExp().getTipo(amb);
 	}
 }

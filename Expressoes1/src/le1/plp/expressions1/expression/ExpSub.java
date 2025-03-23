@@ -12,7 +12,7 @@ public class ExpSub extends ExpBinaria {
 
 	/**
 	 * Controi uma Expressao de Subtracao com as sub-expressoes especificadas.
-	 * Assume-se que estas expressoes resultam em <code>ValorInteiro</code>
+	 * Assume-se que estas expressoes resultam em <code>ValorNumerico</code>
 	 * quando avaliadas.
 	 *
 	 * @param esq Expressao da esquerda
@@ -29,9 +29,11 @@ public class ExpSub extends ExpBinaria {
 	 *            o ambiente de execu��o.
 	 */
 	public Valor avaliar(AmbienteExecucao amb) {
-		return new ValorInteiro(
-				((ValorInteiro)getEsq().avaliar(amb)).valor() -
-				((ValorInteiro)getDir().avaliar(amb)).valor()
+		TipoPrimitivo tipoExpr = getEsq() instanceof ValorReal ? TipoPrimitivo.REAL : TipoPrimitivo.INTEIRO;
+
+		return new ValorNumerico(
+				((ValorNumerico)getEsq().avaliar(amb)).valor() -
+				((ValorNumerico)getDir().avaliar(amb)).valor(), tipoExpr
 		);
 	}
 
@@ -45,7 +47,11 @@ public class ExpSub extends ExpBinaria {
 	 *         <code>false</code> caso contrario.
 	 */
 	protected boolean checaTipoElementoTerminal(AmbienteCompilacao amb) {
-		return (getEsq().getTipo(amb).eInteiro() && getDir().getTipo(amb).eInteiro());
+		boolean esqNumerico = getEsq().getTipo(amb).eInteiro() || getEsq().getTipo(amb).eReal();
+		boolean dirNumerico =  getDir().getTipo(amb).eInteiro() || getDir().getTipo(amb).eReal();
+		boolean esqDirIguais = getEsq().getTipo(amb).eIgual(getDir().getTipo(amb));
+
+		return esqNumerico && dirNumerico && esqDirIguais;
 	}
 
 	/**
