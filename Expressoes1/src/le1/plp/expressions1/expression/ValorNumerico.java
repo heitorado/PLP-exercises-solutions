@@ -5,14 +5,17 @@ import le1.plp.expressions1.util.TipoPrimitivo;
 import le1.plp.expressions2.memory.AmbienteCompilacao;
 
 /**
- * Este valor primitivo encapsula um String.
+ * Objetos desta classe encapsulam valores numericos (reais e inteiros)
  */
-public class ValorString extends ValorConcreto<String> {
+public class ValorNumerico extends ValorConcreto<Double> {
 
-	public ValorString(String valor) {
+    private Tipo tipo;
+	
+	public ValorNumerico(double valor, Tipo tipo) {
 		super(valor);
+        this.tipo = tipo;
 	}
-
+	
 	/**
 	 * Retorna os tipos possiveis desta expressao.
 	 * 
@@ -22,11 +25,15 @@ public class ValorString extends ValorConcreto<String> {
 	 * @return os tipos possiveis desta expressao.
 	 */
 	public Tipo getTipo(AmbienteCompilacao amb) {
-		return TipoPrimitivo.STRING;
+		return this.tipo;
 	}
 
-	@Override
+    @Override
 	public String toString() {
-		return String.format("xxx\"%s\"", super.toString());
+        if (this.tipo == TipoPrimitivo.INTEIRO) {
+		    return String.format("%d", (int) Math.round(this.valor()));
+        }
+
+        return String.format("%f", this.valor());
 	}
 }

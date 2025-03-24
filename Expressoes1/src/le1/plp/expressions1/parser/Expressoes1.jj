@@ -121,6 +121,7 @@ TOKEN : /* LITERALS */
 | < #DECIMAL_LITERAL : [ "1"-"9" ] ([ "0"-"9" ])* >
 | < #HEX_LITERAL : "0" [ "x", "X" ] ([ "0"-"9", "a"-"f", "A"-"F" ])+ >
 | < #OCTAL_LITERAL : "0" ([ "0"-"7" ])* >
+| < REAL_LITERAL : ((["0"-"9"])+(".")(["0"-"9"])+)>
 | < STRING_LITERAL :
     "\""
     (
@@ -211,6 +212,18 @@ Valor PValorInteiro() :
   }
 }
 
+Valor PValorReal() :
+{
+  Token token;
+}
+{
+  token = < REAL_LITERAL >
+  {
+    return new ValorReal(Double.parseDouble(token.toString()));
+  }
+}
+
+
 Valor PValorBooleano() :
 {}
 {
@@ -244,6 +257,7 @@ Valor PValor() :
 {
   (
     retorno = PValorInteiro()
+  | retorno = PValorReal()
   | retorno = PValorBooleano()
   | retorno = PValorString()
   )

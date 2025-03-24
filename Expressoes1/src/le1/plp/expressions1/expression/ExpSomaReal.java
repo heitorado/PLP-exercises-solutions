@@ -6,32 +6,33 @@ import le1.plp.expressions2.memory.AmbienteCompilacao;
 import le1.plp.expressions2.memory.AmbienteExecucao;
 
 /**
-* Um objeto desta classe representa uma Expressao de menos unario.
-*/
-
-public class ExpMenos extends ExpUnaria{
+ * Um objeto desta classe representa uma Expressao de Soma.
+ */
+public class ExpSomaReal extends ExpBinaria {
 
 	/**
-	 * Controi uma Expressao de menos unario com expressao especificada
-	 *
-	 * @param exp Expressao cuja avaliacao resulta <code>ValorInteiro</code>.
+	 * Controi uma Expressao de Soma com as sub-expressoes especificadas.
+	 * Assume-se que estas sub-expressoes resultam em <code>ValorReal</code> 
+	 * quando avaliadas.
+	 * @param esq Expressao da esquerda
+	 * @param dir Expressao da direita
 	 */
-	public ExpMenos(Expressao exp){
-		super(exp, "-");
+	public ExpSomaReal(Expressao esq, Expressao dir) {
+		super(esq, dir, "+");
 	}
 
 	/**
-	 * Retorna o valor da Expressao de menos unario.
+	 * Retorna o valor da Expressao de Soma
 	 * 
 	 * @param amb
 	 *            o ambiente de execu��o.
 	 */
 	public Valor avaliar(AmbienteExecucao amb) {
-		TipoPrimitivo tipoExpr = getExp() instanceof ValorReal ? TipoPrimitivo.REAL : TipoPrimitivo.INTEIRO;
-
-		return new ValorNumerico(- ((ValorNumerico)getExp().avaliar(amb)).valor(), tipoExpr);
+		return new ValorReal(
+			((ValorReal) getEsq().avaliar(amb)).valor() +
+			((ValorReal) getDir().avaliar(amb)).valor() );
 	}
-
+	
 	/**
 	 * Realiza a verificacao de tipos desta expressao.
 	 *
@@ -42,8 +43,7 @@ public class ExpMenos extends ExpUnaria{
 	 *         <code>false</code> caso contrario.
 	 */
 	protected boolean checaTipoElementoTerminal(AmbienteCompilacao amb) {
-		boolean numerico = getExp().getTipo(amb).eInteiro() || getExp().getTipo(amb).eReal();
-		return numerico;
+		return (getEsq().getTipo(amb).eReal() && getDir().getTipo(amb).eReal());
 	}
 
 	/**
@@ -55,6 +55,7 @@ public class ExpMenos extends ExpUnaria{
 	 * @return os tipos possiveis desta expressao.
 	 */
 	public Tipo getTipo(AmbienteCompilacao amb) {
-		return getExp().getTipo(amb);
+		return TipoPrimitivo.REAL;
 	}
+
 }

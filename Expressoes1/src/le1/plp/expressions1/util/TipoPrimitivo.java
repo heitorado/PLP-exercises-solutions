@@ -10,6 +10,7 @@ package le1.plp.expressions1.util;
 public enum TipoPrimitivo implements Tipo {
 
 	INTEIRO("INTEIRO"),
+	REAL("REAL"),
 	BOOLEANO("BOOLEANO"),
 	STRING("STRING");
 
@@ -34,6 +35,13 @@ public enum TipoPrimitivo implements Tipo {
 	 */
 	public boolean eInteiro() {
 		return this.eIgual(INTEIRO);
+	}
+
+	/* (non-Javadoc)
+	 * @see le1.plp.expressions1.util.Tipo#eReal()
+	 */
+	public boolean eReal() {
+		return this.eIgual(REAL);
 	}
 
 	/* (non-Javadoc)
