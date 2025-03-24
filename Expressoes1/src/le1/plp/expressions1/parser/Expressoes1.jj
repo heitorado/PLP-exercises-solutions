@@ -108,6 +108,7 @@ TOKEN : /* TOKENS DE EXPRESSOES 1 */
 | < OR : "or" >
 | < NOT : "not" >
 | < LENGTH : "length" >
+| < TOASCII : "toAscii" >
 | < TRUE : "true" >
 | < FALSE : "false" >
 }
@@ -121,6 +122,7 @@ TOKEN : /* LITERALS */
 | < #DECIMAL_LITERAL : [ "1"-"9" ] ([ "0"-"9" ])* >
 | < #HEX_LITERAL : "0" [ "x", "X" ] ([ "0"-"9", "a"-"f", "A"-"F" ])+ >
 | < #OCTAL_LITERAL : "0" ([ "0"-"7" ])* >
+| < CHAR_LITERAL : "'"(~[ "\"", "'", "\\" ])"'" >
 | < STRING_LITERAL :
     "\""
     (
@@ -237,6 +239,18 @@ Valor PValorString() :
   }
 }
 
+Valor PValorChar() :
+{
+  Token token;
+}
+{
+  token = < CHAR_LITERAL >
+  {
+    Character tokenChar = token.toString().charAt(1);
+    return new ValorChar(tokenChar);
+  }
+}
+
 Valor PValor() :
 {
   Valor retorno;
@@ -246,6 +260,7 @@ Valor PValor() :
     retorno = PValorInteiro()
   | retorno = PValorBooleano()
   | retorno = PValorString()
+  | retorno = PValorChar()
   )
   {
     return retorno;
@@ -289,6 +304,21 @@ Expressao PExpLength() :
   }
 }
 
+Expressao PExpToAscii() :
+{
+  Expressao retorno;
+}
+{
+  < TOASCII > retorno = PExpPrimaria()
+  {
+    if (retorno instanceof ValorChar)
+    {
+      ValorChar val = (ValorChar) retorno;
+    }
+    return new ExpToAscii(retorno);
+  }
+}
+
 Expressao PExpPrimaria() :
 {
   Expressao retorno;
@@ -312,6 +342,7 @@ Expressao PExpUnaria() :
     retorno = PExpMenos()
   | retorno = PExpNot()
   | retorno = PExpLength()
+  | retorno = PExpToAscii()
   | retorno = PExpPrimaria()
   )
   {
